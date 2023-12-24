@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ book.name }}</title>
+    <link rel="stylesheet" href="path_to_your_stylesheet.css">
+    <style>
+        /* Custom styles for book details page */
+
+        body {
+            background-color: #f8f8f8;
+            padding: 40px 0;
+            color: #333;
+        }
+
+        .book-details {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px 60px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;  /* Добавлено для корректного расположения кнопки */
+        }
+
+        .book-details h1 {
+            font-family: 'Gilroy', sans-serif;
+            font-weight: 800;
+            font-size: 28px;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .book-details p {
+            font-family: 'Gilroy', sans-serif;
+            font-weight: 500;
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .book-details p span {
+            font-weight: normal;
+            opacity: 0.7;
+        }
+
+        .return-button {
+            font-family: 'Gilroy', sans-serif;
+            font-weight: 500;
+            background-color: #dcdcdc;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: absolute;  /* Позиционирование кнопки */
+            top: 20px;
+            left: 700px;
+        }
+
+        .return-button:hover {
+            background-color: #bfbfbf;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="book-details">
+        <button class="return-button" onclick="window.history.back();">Вернуться к каталогу</button>
+        <h1>{{ book.name }}</h1>
+        <p><span>Автор:</span> {{ book.author }}</p>
+        <p><span>Жанр:</span> {{ book.genre }}</p>
+        <p><span>Год выпуска:</span> {{ book.year }}</p>
+        <p><span>Цена:</span> {{ book.price }}</p>
+        <p><span>Остаток:</span> {{ book.value }}</p>
+    </div>
+</body>
+
+</html>

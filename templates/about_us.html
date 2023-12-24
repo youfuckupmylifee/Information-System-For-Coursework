@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Книжный магазин</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-logo">
+                <a href="{{ url_for('index') }}" class="header-logo-link">
+                    <img class="header-logo-img" src="{{ url_for('static', filename='img/logo.svg') }}" alt="Тут должен быть логотип" width="85px" height="85px">
+                </a>
+            </div>
+            <nav class="header-nav">
+                <ul class="header-nav-list">
+                    <li class="header-nav-item">
+                        <a class="header-nav-item-link" href="{{ url_for('index') }}">Главная</a>
+                    </li>
+                    <li class="header-nav-item">
+                        <a class="header-nav-item-link" href="{{ url_for('catalog') }}">Каталог</a>
+                    </li>
+                    <li class="header-nav-item">
+                        <a class="header-nav-item-link" href="{{ url_for('orders_page') }}">Информация о заказах</a>
+                    </li>
+                    <li class="header-nav-item">
+                        <a class="header-nav-item-link" href="{{ url_for('about_us') }}">О нас</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-authorization">
+                <ul class="header-authorization-list">
+                    <li class="header-authorization-item">
+                        <a class="header-authorization-item-link" href="#">Войти</a>
+                    </li>
+                    <li class="header-authorization-item">
+                        |
+                    </li>
+                    <li class="header-authorization-item">
+                        <a class="header-authorization-item-link" href="#">Зарегестрироваться</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+	</header>
+	<main>
+        <section class="section-about-us">
+            <div class="container">
+                <h1 class="about-us-heading">О нашем магазине</h1>
+                <div class="about-us-content">
+                    <p class="about-us-description">
+                        Наш книжный магазин был основан в 2000 году. Мы специализируемся на продаже книг разных жанров и направлений, от классики до современных бестселлеров. Наша цель — сделать чтение доступным и приятным для каждого.
+                    </p>
+                    <div class="about-us-values">
+                        <h2 class="values-heading">Наши ценности:</h2>
+                        <ul class="values-list">
+                            <li class="values-item">Качество товара</li>
+                            <li class="values-item">Отличный сервис</li>
+                            <li class="values-item">Удовлетворение потребностей клиентов</li>
+                        </ul>
+                    </div>
+                    <div class="about-us-contact">
+                        <h2 class="contact-heading">Контакты:</h2>
+                        <p class="contact-address">Адрес: ул. Моссковское шоссе, д. 77, г. Самара</p>
+                        <p class="contact-phone">Телефон: +7 123 456 78 90</p>
+                        <p class="contact-email">Email: info@bookstore.com</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+	</main>
+</body>
+</html>

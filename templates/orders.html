@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Информация о заказах</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-logo">
+                <a href="{{ url_for('index') }}" class="header-logo-link">
+                    <img class="header-logo-img" src="{{ url_for('static', filename='img/logo.svg') }}" alt="Тут должен быть логотип" width="85px" height="85px">
+                </a>
+            </div>
+            <nav class="header-nav">
+                <ul class="header-nav-list">
+                    <li class="header-nav-item">
+                        <a class="header-nav-item-link" href="{{ url_for('index') }}">Главная</a>
+                    </li>
+                    <li class="header-nav-item">
+                        <a class="header-nav-item-link" href="{{ url_for('catalog') }}">Каталог</a>
+                    </li>
+                    <li class="header-nav-item">
+                        <a class="header-nav-item-link" href="{{ url_for('orders_page') }}">Информация о заказах</a>
+                    </li>
+                    <li class="header-nav-item">
+                        <a class="header-nav-item-link" href="{{ url_for('about_us') }}">О нас</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-authorization">
+                <ul class="header-authorization-list">
+                    <li class="header-authorization-item">
+                        <a class="header-authorization-item-link" href="#">Войти</a>
+                    </li>
+                    <li class="header-authorization-item">
+                        |
+                    </li>
+                    <li class="header-authorization-item">
+                        <a class="header-authorization-item-link" href="#">Зарегестрироваться</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+	</header>
+
+    <main>
+        <div class="container">
+            <h1 class="orders-heading">Информация о заказах</h1>
+    
+            <table class="orders-table">
+                <thead>
+                    <tr>
+                        <th>ID заказа</th>
+                        <th>ID клиента</th>
+                        <th>ID книги</th>
+                        <th>Количество</th>
+                        <th>Дата</th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <td>{{ order.id_order }}</td>
+                        <td>{{ order.id_client }}</td>
+                        <td>{{ order.id_book }}</td>
+                        <td>{{ order.value }}</td>
+                        <td>{{ order.date }}</td>
+                        <td><button data-order-id="{{ order.id_order }}" class="delete-button">Удалить</button></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const deleteButtons = document.querySelectorAll('.delete-button');
+    
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const orderId = this.getAttribute('data-order-id');
+                    
+                    fetch('/delete_order/' + orderId, {
+                        method: 'POST',
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            location.reload();
+                        } else {
+                            alert('Ошибка при удалении');
+                        }
+                    });
+                });
+            });
+        });
+    </script>    
+</body>
+</html>

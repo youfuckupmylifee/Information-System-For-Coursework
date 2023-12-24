@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Создать новую книгу</title>
+</head>
+<body>
+    <h1>Создать новую книгу</h1>
+    <form method="POST">
+        <label for="book_name">Название книги:</label>
+        <input type="text" name="book_name" id="book_name" required>
+        <br>
+        
+        <label for="book_author">Автор:</label>
+        <input type="text" name="book_author" id="book_author" required>
+        <br>
+        
+        <label for="book_genre">Жанр:</label>
+        <input type="text" name="book_genre" id="book_genre" required>
+        <br>
+        
+        <label for="book_year">Год:</label>
+        <input type="number" name="book_year" id="book_year" required>
+        <br>
+        
+        <label for="book_price">Цена:</label>
+        <input type="number" name="book_price" id="book_price" required>
+        <br>
+        
+        <label for="book_value">Количество:</label>
+        <input type="number" name="book_value" id="book_value" required>
+        <br>
+        
+        <input type="submit" value="Создать книгу">
+        
+    </form>
+</body>
+</html>

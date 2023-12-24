@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Книжный магазин</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-logo">
+                <a href="{{ url_for('index') }}" class="header-logo-link">
+                    <img class="header-logo-img" src="{{ url_for('static', filename='img/logo.svg') }}" alt="Тут должен быть логотип" width="85px" height="85px">
+                </a>
+            </div>
+            <nav class="header-nav">
+                <ul class="header-nav-list">
+                    <li class="header-nav-item">
+                        <a class="header-nav-item-link" href="#">Главная</a>
+                    </li>
+                    <li class="header-nav-item">
+                        <a class="header-nav-item-link" href="{{ url_for('catalog') }}">Каталог</a>
+                    </li>
+                    <li class="header-nav-item">
+                        <a class="header-nav-item-link" href="{{ url_for('orders_page') }}">Информация о заказах</a>
+                    </li>
+                    <li class="header-nav-item">
+                        <a class="header-nav-item-link" href="{{ url_for('about_us') }}">О нас</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-authorization">
+                <ul class="header-authorization-list">
+                    <li class="header-authorization-item">
+                        <a class="header-authorization-item-link" href="#">Войти</a>
+                    </li>
+                    <li class="header-authorization-item">
+                        |
+                    </li>
+                    <li class="header-authorization-item">
+                        <a class="header-authorization-item-link" href="#">Зарегестрироваться</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+	</header>
+	<main>
+        <section class="section-main">
+            <div class="container">
+                <div class="intro">
+                    <h1>Добро пожаловать в наш книжный магазин!</h1>
+                    <p>Здесь вы найдете множество интересных книг на любой вкус. От классики до современной литературы.</p>
+                    <img src="{{ url_for('static', filename='img/main.svg') }}" alt="Изображение книжного магазина">
+                    <div class="btn">
+                        <a href="{{ url_for('catalog') }}" class="btn-explore">Исследовать каталог</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+	</main>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Редактировать книгу</title>
+</head>
+<body>
+    <h1>Редактировать книгу</h1>
+    <form method="POST">
+        <label for="book_name">Название книги:</label>
+        <input type="text" name="book_name" id="book_name" value="{{ book_name }}" required>
+        <br>
+        
+        <label for="book_author">Автор:</label>
+        <input type="text" name="book_author" id="book_author" value="{{ book_author }}" required>
+        <br>
+        
+        <label for="book_genre">Жанр:</label>
+        <input type="text" name="book_genre" id="book_genre" value="{{ book_genre }}" required>
+        <br>
+        
+        <label for="book_year">Год:</label>
+        <input type="number" name="book_year" id="book_year" value="{{ book_year }}" required>
+        <br>
+        
+        <label for="book_price">Цена:</label>
+        <input type="number" name="book_price" id="book_price" value="{{ book_price }}" required>
+        <br>
+        
+        <label for="book_value">Количество:</label>
+        <input type="number" name="book_value" id="book_value" value="{{ book_value }}" required>
+        <br>
+        
+        <input type="submit" value="Сохранить изменения">
+    </form>
+
+    <form action="{{ url_for('delete_book', book_id=book_id) }}" method="post" style="margin-top:20px;">
+        <input type="submit" value="Удалить книгу" class="delete-button">
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+    {% endwith %}
+        
+    
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Книжный магазин</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-logo">
+                <a href="{{ url_for('index') }}" class="header-logo-link">
+                    <img class="header-logo-img" src="{{ url_for('static', filename='img/logo.svg') }}" alt="Тут должен быть логотип" width="85px" height="85px">
+                </a>
+            </div>
+            <nav class="header-nav">
+                <ul class="header-nav-list">
+                    <li class="header-nav-item">
+                        <a class="header-nav-item-link" href="{{ url_for('index') }}">Главная</a>
+                    </li>
+                    <li class="header-nav-item">
+                        <a class="header-nav-item-link" href="{{ url_for('catalog') }}">Каталог</a>
+                    </li>
+                    <li class="header-nav-item">
+                        <a class="header-nav-item-link" href="{{ url_for('orders_page') }}">Информация о заказах</a>
+                    </li>
+                    <li class="header-nav-item">
+                        <a class="header-nav-item-link" href="{{ url_for('about_us') }}">О нас</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-authorization">
+                <ul class="header-authorization-list">
+                    <li class="header-authorization-item">
+                        <a class="header-authorization-item-link" href="#">Войти</a>
+                    </li>
+                    <li class="header-authorization-item">
+                        |
+                    </li>
+                    <li class="header-authorization-item">
+                        <a class="header-authorization-item-link" href="#">Зарегестрироваться</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+	</header>
+	<main>
+        <section class="section-catalog centered-container">
+            <div class="container">
+                <ul class="catalog-list">
+                    {% for book in books %}
+                        <li class="catalog-item">
+                            <a class="catalog-item-link" href="{{ url_for('book_details', book_id=book.id_book) }}">{{ book.name }}</a>
+                            <form method="POST" action="{{ url_for('order_book', book_id=book.id_book) }}">
+                                <label for="client_id">Ваш ID: </label>
+                                <input type="text" name="client_id" required><br>
+                                <label for="order_value">Количество: </label>
+                                <input type="number" name="order_value" required><br>
+                                <input type="submit" value="Заказать">
+                            </form>
+                        </li>
+                    {% endfor %}
+                </ul>        
+            </div>
+        </section>
+	</main>
+</body>
+</html>
